@@ -1,0 +1,17 @@
+var storage={
+    set(key,value){
+        localStorage.setItem(key,value);
+    },
+    get(key){
+        return localStorage.getItem(key);
+    },
+    remove(){
+        localStorage.clear
+        
+    },
+    removeItems(key){
+        localStorage.removeItem(key)
+    }
+
+}
+export default storage; 

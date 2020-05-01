@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+ 
+<table>
+    <tbody></tbody>
+</table>
+ 
+<script type="text/javascript">
+                this.$Modal.confirm({
+                    title: 'Title',
+                    content: '<p>Content of dialog</p><p>Content of dialog</p>',
+                    onOk: () => {
+                        this.$Message.info('删除成功');
+                    },
+                    onCancel: () => {
+                        this.$Message.info('取消');
+                    }
+                });
+
+
+
+    var tbody = document.getElementsByTagName('tbody')[0];
+ 
+    //var allLines = 10000;
+    // 每次渲染的行数
+    var everyTimeCreateLines = 80;
+    // 当前行
+    var currentLine = 0;
+ 
+    setTimeout(function renderTable(){
+        // console.time('wd');
+        for(var i=currentLine; i<currentLine+everyTimeCreateLines && i<10000; i++){
+            var tr = document.createElement('tr');
+ 
+            for(var j=0; j<10; j++){
+                var td = document.createElement('td');
+ 
+                td.appendChild(document.createTextNode(i+','+j));
+                tr.appendChild(td);
+            }
+ 
+            tbody.appendChild(tr);
+        }
+        // console.timeEnd('wd');
+ 
+        currentLine = i;
+ 
+        if(currentLine < 10000){
+            setTimeout(renderTable,0);
+        }
+    },0);
+ 
+ /*
+
+
+ 
+*/
+</script>
+</body>
+</html>
