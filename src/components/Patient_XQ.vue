@@ -59,7 +59,7 @@ import Axios from 'axios'
          number:'',
         columns: [
           {
-            title: '姓名',
+            title: '名称',
             slot: 'name'
           },
           {

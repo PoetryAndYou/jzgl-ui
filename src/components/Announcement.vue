@@ -26,8 +26,6 @@
                                     <h1>{{an.title}}</h1><i class="header-icon el-icon-info"></i>
                                 </template>
                                    <li v-html="an.content"></li>
-
-                            
                                 </el-collapse-item>
                                 </el-collapse>
                             </el-card>
