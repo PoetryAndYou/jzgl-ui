@@ -3,7 +3,7 @@
     <el-tabs tab-position="left" style="height: 1800px;">
       <el-tab-pane label="待就诊">
         <el-tabs v-model="editableTabsValue" type="card" closable @tab-remove="removeTab">
-          <el-tab-pane closable label="待就诊列表" name="1" title="1">
+          <el-tab-pane closable label="待就诊列表" name="1" title="12">
             <el-row :gutter="0">
               <el-col :span="6" :push="0">
                 <el-form :inline="true" class="demo-form-inline">
@@ -73,7 +73,7 @@
               layout="prev, pager, next"
               :total="pages"
               :page-size="8"
-              @current-change="findPatienthistory"
+              @current-change="findAllPatient"
             ></el-pagination>
           </el-tab-pane>
           <!-- //病人详情 -->
@@ -293,6 +293,7 @@ export default {
         }
       }).then(res => {
         _this.tableData = res.data.data.list;
+        _this.pages = res.data.data.total;
       });
     },
 

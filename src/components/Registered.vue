@@ -1,82 +1,86 @@
 <template>
   <div class="sz">
     <div>
-      <el-tabs :tab-position="tabPosition" style="height: 600px;" @tab-click="aa">
+      <el-tabs :tab-position="tabPosition" style="height: 800px;" @tab-click="aa">
         <el-tab-pane label="挂号" v-show="false">
-          <el-row>
-            <el-col :span="6" :push="1">
-              <Input type="text" placeholder="身份证号" v-model.trim="paidcard" />
-            </el-col>
-            <el-col :span="6" :push="1">
-              <Button type="success" large @click="findPatient(paidcard)">查询</Button>
-            </el-col>
+          <Row>
+            <Col :span="10" :push="6">
+            <br><br>
+              <el-row>
+                <el-col :span="6">
+                  <Input type="text" placeholder="身份证号" v-model.trim="paidcard" />
+                </el-col>
+                <el-col :span="6" >
+                  <Button type="success" large @click="findPatient(paidcard)">查询</Button>
+                </el-col>
 
-            <el-col :span="6" :push="1">
-              <Input type="text" placeholder="姓名" v-model.trim="patientName" />
-            </el-col>
+                <el-col :span="6" :push="2">
+                  <Input type="text" placeholder="姓名" v-model.trim="patientName" />
+                </el-col>
 
-            <el-col :span="6" :push="1">
-              <Button type="success" large @click="findByName()">查询</Button>
-            </el-col>
-          </el-row>
-          <br />
-          <hr />
-          <Table :columns="columns" :data="data1" v-if="editIndex === index">
-            <template slot-scope="{ row, index }" slot="idcard">
-              <span>{{ row.idcard }}</span>
-            </template>
-            <template slot-scope="{ row, index }" slot="name">
-              <span>{{ row.name }}</span>
-            </template>
+                <el-col :span="6" :push="2">
+                  <Button type="success" large @click="findByName()">查询</Button>
+                </el-col>
+              </el-row>
+              <br />
+              <Table :columns="columns" :data="data1" v-if="editIndex === index">
+                <template slot-scope="{ row, index }" slot="idcard">
+                  <span>{{ row.idcard }}</span>
+                </template>
+                <template slot-scope="{ row, index }" slot="name">
+                  <span>{{ row.name }}</span>
+                </template>
 
-            <template slot-scope="{ row, index }" slot="age">
-              <span>{{ row.age }}</span>
-            </template>
+                <template slot-scope="{ row, index }" slot="age">
+                  <span>{{ row.age }}</span>
+                </template>
 
-            <template slot-scope="{ row, index }" slot="sex">
-              <span>{{ row.sex }}</span>
-            </template>
+                <template slot-scope="{ row, index }" slot="sex">
+                  <span>{{ row.sex }}</span>
+                </template>
 
-            <template slot-scope="{ row, index }" slot="number">
-              <span>{{ row.number }}</span>
-            </template>
+                <template slot-scope="{ row, index }" slot="number">
+                  <span>{{ row.number }}</span>
+                </template>
 
-            <template slot-scope="{ row, index }" slot="action">
-              <Button type="parmary" @click="remove(row)">选择</Button>
-            </template>
-          </Table>
+                <template slot-scope="{ row, index }" slot="action">
+                  <Button type="parmary" @click="remove(row)">选择</Button>
+                </template>
+              </Table>
 
-          <Affix :offset-top="700" v-if="editIndex === index">
-            <Button type="dashed" long @click="goBack">返回</Button>
-          </Affix>
+              <Affix :offset-top="700" v-if="editIndex === index">
+                <Button type="dashed" long @click="goBack">返回</Button>
+              </Affix>
 
-          <Form :model="patientForm" label-position="top" v-else>
-            <FormItem label="身份证" size="60px">
-              <Input
-                v-model.trim="patientForm.idcard"
-                placeholder="Enter something..."
-                size="large"
-                readonly
-              ></Input>
-            </FormItem>
-            <FormItem label="姓名">
-              <Input v-model="patientForm.name" placeholder="Enter something..." size="large"></Input>
-            </FormItem>
-            <FormItem label="手机号">
-              <Input v-model="patientForm.number" placeholder="Enter something..." size="large"></Input>
-            </FormItem>
-            <FormItem label="余额">
-              <Input v-model="patientForm.money" placeholder="Enter something..." size="large"></Input>
-            </FormItem>
-            <FormItem label="科室">
-              <Select v-model="patientForm.department" size="large">
-                <Option v-for="de in department" :key="de.id" :label="de.name" :value="de.name"></Option>
-              </Select>
-            </FormItem>
+              <Form :model="patientForm" label-position="top" v-else>
+                <FormItem label="身份证" size="60px">
+                  <Input
+                    v-model.trim="patientForm.idcard"
+                    placeholder="请输入身份证"
+                    size="large"
+                  ></Input>
+                </FormItem>
+                <FormItem label="姓名">
+                  <Input v-model="patientForm.name" placeholder="请输入姓名" size="large"></Input>
+                </FormItem>
+                <FormItem label="手机号">
+                  <Input v-model="patientForm.number" placeholder="请输入手机号" size="large"></Input>
+                </FormItem>
+                <FormItem label="余额">
+                  <Input v-model="patientForm.money" placeholder="请输余额" size="large"></Input>
+                </FormItem>
+                <FormItem label="科室">
+                  <Select v-model="patientForm.department" size="large">
+                    <Option v-for="de in department" :key="de.id" :label="de.name" :value="de.name"></Option>
+                  </Select>
+                </FormItem>
 
-            <Button type="primary" @click="onSubmit()">确定</Button>
-            <Button @click="clearForm()">清除</Button>
-          </Form>
+                <Button type="primary" @click="onSubmit()" >确定</Button>
+                <Button @click="clearForm()">清除</Button>
+              </Form>
+              <br><br><br><br><br><br><br><br><br>
+            </Col>
+          </Row>
         </el-tab-pane>
 
         <el-tab-pane label="挂号记录">
