@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="as1">
     <!-- {{amdata}} -->
     <Tabs type="card" @on-click="whenclick">
       <TabPane label="公告">

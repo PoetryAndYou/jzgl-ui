@@ -16,7 +16,7 @@
       <el-collapse accordion>
         <el-row :gutter="20">
           <el-col :push="1" :span="16">
-            <div class="block">
+            <!-- <div class="block">
               <el-timeline>
                 <el-timeline-item
                   v-for="an in Anno"
@@ -37,7 +37,21 @@
                   </el-card>
                 </el-timeline-item>
               </el-timeline>
+            </div> -->
+            <div style="background:#eee;padding: 20px" v-for="(an,index) in Anno" :key="an.id" >
+                <Card :bordered="false" 
+                      style="height:220px"
+                      >
+                    <span slot="extra" @click.prevent="alet(an)">
+                    <Icon type="ios-loop-strong"></Icon>
+                    <a>查看</a>
+                    </span>
+                    <p slot="title">{{an.time}} <Icon type="ios-book-outline" /><b> {{an.title}} </b>   </p>
+                    <p slot="extra"></p>
+                    <p style=" font-size: 18px">{{Annonext[index]}}</p>
+                </Card>
             </div>
+
           </el-col>
 
           <el-col :span="6" :push="1">
@@ -46,6 +60,16 @@
         </el-row>
       </el-collapse>
     </el-row>
+    <Modal v-model="modal11" fullscreen :title=modaltitle >
+      <Row class="as1">
+        <Col span="10" :push="6" >
+        <div style=" font-size: 18px"><Icon type="ios-medkit-outline" />{{modaltitle}}</div>
+        <br>
+        <hr>
+        <div style=" font-size: 17px"  v-html="modalcontent"></div>
+        </Col>
+      </Row>
+    </Modal>
   </div>
 </template>
 
@@ -56,10 +80,19 @@ export default {
     return {
       value: new Date(),
       imgs: [],
-      Anno: []
+      Anno: [],
+      Annonext:[],
+      modal11:false,
+      modaltitle:'',
+      modalcontent:'',
     };
   },
   methods: {
+    alet(an){
+      this.modal11=true
+      this.modaltitle=an.title,
+      this.modalcontent=an.content
+    },
     getImgs() {
       // Make a request for a user with a given ID
       var _this = this;
@@ -83,7 +116,12 @@ export default {
         .get("/api/pub/anno")
         .then(function(response) {
           _this.Anno = response.data.data;
-          // console.log(response);
+          _this.Anno.forEach((element,index) => {
+          _this.Annonext[index]=element.content.substring(0,300);
+          _this.Anno[index].time=element.time.substring(0,10);
+          });
+
+           console.log(_this.Annonext);
         })
         .catch(function(error) {
           // handle error
@@ -128,4 +166,5 @@ export default {
 .is-selected {
   color: #1989fa;
 }
+
 </style>

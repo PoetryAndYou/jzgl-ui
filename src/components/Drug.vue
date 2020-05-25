@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="as1">
     <el-tabs tab-position="left" style="height: 800px;" @tab-click="quYao">
       <el-tab-pane label="取药">
         <template>

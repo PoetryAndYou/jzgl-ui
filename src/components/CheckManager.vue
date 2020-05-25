@@ -66,7 +66,7 @@ export default {
   methods: {
     add() {
       let _this = this;
-      Axios.get("/api/admin/addDepartment", {
+      Axios.get("/api/admin/addCheck", {
         params: {
           name: _this.name,
           description: _this.description
@@ -88,7 +88,7 @@ export default {
       this.data[index].description = this.editDescription;
       this.editIndex = -1;
       let _this = this;
-      Axios.get("/api/admin/updateDepartment", {
+      Axios.get("/api/admin/updateCheck", {
         params: {
           name: _this.editName,
           description: _this.editDescription,
@@ -106,7 +106,7 @@ export default {
         onOk: () => {
           this.data.splice(index, 1);
           let _this = this;
-          Axios.get("/api/admin/deleteDepartment", {
+          Axios.get("/api/admin/deleteICheck", {
             params: {
               id: row.id
             }
@@ -121,7 +121,7 @@ export default {
     },
     findAllDeparment() {
       let _this = this;
-      Axios.get("/api/admin/findAllDeparment").then(res => {
+      Axios.get("/api/admin/findAllCheck").then(res => {
         _this.data = res.data.data;
       });
     }

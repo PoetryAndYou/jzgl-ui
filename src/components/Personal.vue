@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div  class="as1">
     <!-- <el-button @click="al()"></el-button> -->
     <template>
       <Tabs>

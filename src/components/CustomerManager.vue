@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="as1">
     <!-- Form -->
     <el-button type="text" @click="dialogFormVisible = true">添加新用户</el-button>
 

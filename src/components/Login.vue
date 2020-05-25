@@ -102,7 +102,7 @@ export default {
           location.reload();
         })
         .catch(error => {
-          alert("11" + error);
+          alert("账号或密码错误");
         });
     },
     //查询用户拥有的菜单

@@ -1,7 +1,7 @@
 <template>
   <div>
     <Divider size="small">描述</Divider>
-    就诊病人 {{username}}
+    看诊医生职工号： {{username}}
     <div>
       <el-input v-model="conslusion1"></el-input>
     </div>

@@ -1,5 +1,5 @@
-<template>
-  <div>
+<template  >
+  <div class="as1">
     <el-upload
       class="upload-demo"
       :action="actionUtil"

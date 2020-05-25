@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="as1">
     <el-tabs tab-position="left" style="height: 1800px;">
       <el-tab-pane label="待就诊">
         <el-tabs v-model="editableTabsValue" type="card" closable @tab-remove="removeTab">
@@ -41,13 +41,14 @@
             </el-row>
             <br />
             <template>
-              <el-table :data="tableData" border stripe style="width:60%" ref="table">
-                <el-table-column fixed label="时间" prop="create_time" width="170"></el-table-column>
+              <el-table :data="tableData" border stripe style="width:70%" ref="table">
+                <el-table-column fixed label="时间" prop="create_time" width="200"></el-table-column>
                 <el-table-column prop="name" label="姓名" width="160"></el-table-column>
-                <el-table-column label="身份号" prop="idcard" width="160"></el-table-column>
-                <el-table-column label="电话" prop="number" width="160"></el-table-column>
+                <el-table-column label="身份号" prop="idcard" width="200"></el-table-column>
+                <el-table-column label="电话" prop="number" width="200"></el-table-column>
                 <el-table-column label="余额" prop="money" width="160"></el-table-column>
-                <el-table-column fixed="right" label="操作" width="160">
+                <el-table-column label="是否初诊" prop="sfcz" width="160"></el-table-column>
+                <el-table-column  label="操作" width="200">
                   <template slot-scope="scope">
                     <el-button
                       @click="addTab(editableTabsValue,scope.row),findAllPM(scope.row.id);"

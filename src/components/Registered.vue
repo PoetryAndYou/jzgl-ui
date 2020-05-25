@@ -1,10 +1,10 @@
 <template>
-  <div class="sz">
+  <div class="sz as1" >
     <div>
       <el-tabs :tab-position="tabPosition" style="height: 800px;" @tab-click="aa">
         <el-tab-pane label="挂号" v-show="false">
-          <Row>
-            <Col :span="10" :push="6">
+          <Row >
+            <Col :span="10" :push="6" >
             <br><br>
               <el-row>
                 <el-col :span="6">
@@ -74,7 +74,12 @@
                     <Option v-for="de in department" :key="de.id" :label="de.name" :value="de.name"></Option>
                   </Select>
                 </FormItem>
-
+                <FormItem label="是/否初诊">
+                  <Select  v-model="patientForm.sfcz" size="large">
+                    <Option value="是">是</Option>
+                    <Option value="否">否</Option>
+                  </Select>
+                </FormItem>
                 <Button type="primary" @click="onSubmit()" >确定</Button>
                 <Button @click="clearForm()">清除</Button>
               </Form>
@@ -180,7 +185,8 @@ export default {
         idcard: "",
         department: "",
         createTime: "",
-        status: ""
+        status: "",
+        sfcz:""
       },
       tableData: [],
       search: "",
@@ -296,7 +302,8 @@ export default {
         money: _this.patientForm.money,
         idcard: _this.patientForm.idcard,
         department: _this.patientForm.department,
-        id: _this.patientForm.id
+        id: _this.patientForm.id,
+        sfcz:_this.patientForm.sfcz
       })
         .then(function(response) {
           _this.patientForm.id = "";
@@ -336,5 +343,9 @@ export default {
   /* margin-right: 55%; */
   margin-left: 20%;
   float: left;
+}
+.as1{
+  height:100%;
+    background: url(../img/timg.jpg) no-repeat;
 }
 </style>
