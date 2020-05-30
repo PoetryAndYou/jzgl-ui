@@ -1,5 +1,5 @@
 <template>
-      <div >
+      <div  class="as1 as2">
         <div class="line" center></div>
  
         <el-menu
@@ -43,6 +43,7 @@
 </template>
 
 <script>
+
 import store from './store/store'
 import VueEvent from './model/VueEvent.js';
 import Axios from 'axios';
@@ -186,5 +187,13 @@ export default {
 
 #ri{
    margin-right: 0%;
+}
+.as1{
+    height:100%;
+    background: url(./img/timg.jpg);
+   background-attachment:fixed
+}
+.as2{
+  height: 900px;
 }
 </style>

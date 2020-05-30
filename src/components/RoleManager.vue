@@ -1,5 +1,5 @@
 <template>
-  <div class="as1">
+  <div class="as1 as2" >
     <Row>
       <Col span="4" style="padding-right:10px">
         <Input type="text" v-model="roleName" placeholder="名字" />

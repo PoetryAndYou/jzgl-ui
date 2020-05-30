@@ -1,5 +1,5 @@
 <template>
-  <div  class="as1">
+  <div  class="as1 as2">
     <!-- <el-button @click="al()"></el-button> -->
     <template>
       <Tabs>
@@ -88,7 +88,7 @@ export default {
           age: _this.formItem.age,
           number: _this.formItem.number,
           mail: _this.formItem.mail,
-          username: _this.username
+          id:this.formItem.id
         }
       }).then(res => {
         _this.$Message.success("修改成功");

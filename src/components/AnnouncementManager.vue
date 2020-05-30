@@ -1,4 +1,4 @@
-<template>
+<template  class="as1">
   <div class="as1">
     <!-- {{amdata}} -->
     <Tabs type="card" @on-click="whenclick">

@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div class="as2 as1">
     <el-tabs type="border-card">
       <el-tab-pane label="首页管理">
         <el-tabs tab-position="left" style="height: 800px;">

@@ -1,7 +1,7 @@
 <template>
   <div class="sz as1" >
     <div>
-      <el-tabs :tab-position="tabPosition" style="height: 800px;" @tab-click="aa">
+      <el-tabs :tab-position="tabPosition" style="height: 900px;" @tab-click="aa">
         <el-tab-pane label="挂号" v-show="false">
           <Row >
             <Col :span="10" :push="6" >

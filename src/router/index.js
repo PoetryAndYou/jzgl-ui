@@ -12,55 +12,6 @@ import store from '@/store/store'
 
 
 Vue.use(Router)
-
-// export default new Router({
-//   mode: 'history',
-//   routes: [
-//     {
-//       path: '/',
-//       name: 'Announcement',
-//       component: Announcement
-//     },
-//     {
-//       path: '/announcement',
-//       name: 'Announcement',
-//       component: Announcement
-//     },
-//     {
-//       path: '/registered',
-//       name: 'Registered',
-//       component: Registered
-//     },
-//     {
-//       path: '/view_doctor',
-//       name: 'ViewDoctor',
-//       component: ViewDoctor
-//     },
-//     {
-//       path: '/drug',
-//       name: 'Drug',
-//       component: Drug
-//     },
-//     {
-//       path: '/system',
-//       name: 'System',
-//       component: System
-//     },
-//     {
-//       path: '/login',
-//       name: 'Login',
-//       component: Login
-//     }
-//     ,
-//     {
-//       path: '/personal',
-//       name: 'Personal',
-//       component: Personal
-//     }
-//   ]
-// }
-
-// )
 // 页面刷新时，重新赋值token
 if (sessionStorage.getItem('token')) {
   store.commit('set_token', sessionStorage.getItem('token'))

@@ -16,28 +16,6 @@
       <el-collapse accordion>
         <el-row :gutter="20">
           <el-col :push="1" :span="16">
-            <!-- <div class="block">
-              <el-timeline>
-                <el-timeline-item
-                  v-for="an in Anno"
-                  :timestamp="an.time"
-                  placement="top"
-                  :key="an.id"
-                >
-                  <el-card>
-                    <el-collapse>
-                      <el-collapse-item>
-                        <template slot="title">
-                          <h1>{{an.title}}</h1>
-                          <i class="header-icon el-icon-info"></i>
-                        </template>
-                        <li v-html="an.content"></li>
-                      </el-collapse-item>
-                    </el-collapse>
-                  </el-card>
-                </el-timeline-item>
-              </el-timeline>
-            </div> -->
             <div style="background:#eee;padding: 20px" v-for="(an,index) in Anno" :key="an.id" >
                 <Card :bordered="false" 
                       style="height:220px"
@@ -56,10 +34,15 @@
 
           <el-col :span="6" :push="1">
             <el-calendar v-model="value" class="block"></el-calendar>
+            <br>
+            <span style="float: right;">就诊管理系统</span>
           </el-col>
         </el-row>
       </el-collapse>
     </el-row>
+    <footer class="footer">
+      <center>就诊管理系统</center>
+    </footer>
     <Modal v-model="modal11" fullscreen :title=modaltitle >
       <Row class="as1">
         <Col span="10" :push="6" >
@@ -161,10 +144,16 @@ export default {
 }
 .content {
   margin: 0 auto; /*水平居中*/
+  
 }
 
 .is-selected {
   color: #1989fa;
 }
-
+.footer{
+    width: 100%;
+    height: 100px;
+    background-color: #e5e5e5;
+    margin: 0 auto; 
+}
 </style>

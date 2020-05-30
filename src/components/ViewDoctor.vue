@@ -41,13 +41,14 @@
             </el-row>
             <br />
             <template>
-              <el-table :data="tableData" border stripe style="width:70%" ref="table">
-                <el-table-column fixed label="时间" prop="create_time" width="200"></el-table-column>
-                <el-table-column prop="name" label="姓名" width="160"></el-table-column>
-                <el-table-column label="身份号" prop="idcard" width="200"></el-table-column>
-                <el-table-column label="电话" prop="number" width="200"></el-table-column>
-                <el-table-column label="余额" prop="money" width="160"></el-table-column>
-                <el-table-column label="是否初诊" prop="sfcz" width="160"></el-table-column>
+              <el-table :data="tableData" border stripe  ref="table">
+                <el-table-column label="时间" prop="create_time" ></el-table-column>
+                <el-table-column prop="name" label="姓名" ></el-table-column>
+                <el-table-column label="身份号" prop="idcard" ></el-table-column>
+                <el-table-column label="电话" prop="number" ></el-table-column>
+                <el-table-column label="余额" prop="money" ></el-table-column>
+                <el-table-column label="科室" prop="department" ></el-table-column>
+                <el-table-column label="是否初诊" prop="sfcz" ></el-table-column>
                 <el-table-column  label="操作" width="200">
                   <template slot-scope="scope">
                     <el-button
