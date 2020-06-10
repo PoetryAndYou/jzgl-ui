@@ -191,7 +191,7 @@
                       </Select>
                     </Col>
                     <Col span="4">
-                      <Button @click="addCheck(model17)" type="primary" size="mini">添加</Button>
+                      <Button @click="addCheck(model17)" type="primary" size="small">添加</Button>
                     </Col>
                   </Row>
                   <!-- 检查 -->
@@ -285,6 +285,7 @@ export default {
     this.findAllPatient(1);
   },
   methods: {
+
     findAllPatient(key) {
       let _this = this;
       Axios.get("/api/viewdoctor/findAllPatient", {
@@ -310,9 +311,15 @@ export default {
       var _this = this;
       var drug = JSON.parse(localStorage.getItem("drug"));
       var t = "";
-      for (let index = 0; index < drug.length; index++) {
-        t = t + "" + drug[index].name + ":" + drug[index].number + "天";
+      if(drug!=null){
+        for (let index = 0; index < drug.length; index++) {
+            t = t + "" + drug[index].name + ":" + drug[index].number + "天";
+          
+        }
       }
+
+
+
 
       Axios.get("/api/viewdoctor/addPatientMD", {
         params: {
@@ -323,7 +330,9 @@ export default {
           paid: id
         }
       })
-        .then(function(res) {})
+        .then(function(res) {
+         localStorage.removeItem("drug")
+        })
         .catch(function(res) {});
     },
     updataPatient(name, age, sex, number, id) {

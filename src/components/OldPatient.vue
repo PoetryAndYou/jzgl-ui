@@ -16,13 +16,37 @@
       <template slot-scope="{ row }" slot="department">
         <span>{{ row.department }}</span>
       </template>
-
+      <template slot-scope="{ row, index }" slot="pm">
+        <div>
+          <Button @click="look(row,index),modal11 = true">查看病历</Button>
+        </div>
+      </template>
       <template slot-scope="{ row, index }" slot="action">
         <div>
           <Button type="error" @click="remove(row,index)">Delete</Button>
         </div>
       </template>
     </Table>
+    <template >
+      <Modal v-model="modal11" fullscreen :title=PatientName>
+         <div class="as1">
+            
+            <Collapse  accordion>
+                <Panel v-for="(item ,index) in PatientMedical" :key="index">
+                    时间：{{item.visittime}} 确诊： {{item.conclusion}}               
+                    <p slot="content">
+                      <span>就诊时间：{{item.visittime}}</span><br>
+                      <span>确诊情况：{{item.conclusion}}</span><br>
+                      <span>医生编号：{{item.doctor}}</span><br>
+                      <span>描述：{{item.symptom}}</span><br>
+                      <span>处方：{{item.drug}}</span><br>
+                    </p>
+                </Panel>
+            </Collapse>
+           
+        </div>
+      </Modal>
+    </template>
     <el-pagination
       background
       layout="prev, pager, next"
@@ -37,6 +61,7 @@ import Axios from "axios";
 export default {
   data() {
     return {
+      modal11:false,
       pages: 20,
       columns: [
         {
@@ -56,12 +81,18 @@ export default {
           slot: "department"
         },
         {
+          title: "查看",
+          slot: "pm"
+        },
+        {
           title: "操作",
           slot: "action"
         }
       ],
       data: [],
-      nowPages: 1
+      nowPages: 1,
+      PatientName:'',
+      PatientMedical:[]
     };
   },
   methods: {
@@ -102,9 +133,23 @@ export default {
           // location.reload()
         })
         .catch(function(err) {});
+    },
+    look(row, index){
+      var _this=this;
+      _this.PatientName=row.name
+      Axios.get("/api/viewdoctor/findAllPMByUserId", {
+        params: {
+          id: row.id
+        }
+      })
+        .then(function(res) {
+          _this.PatientMedical=res.data.data;
+          console.log( _this.PatientMedical)
+        })
+        .catch(function(res) {});
     }
   },
-  created: function() {
+  mounted: function() {
     var _this = this;
     this.$nextTick(() => {
       this.findPatienthistory(_this.nowPages);
